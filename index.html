@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ゲーム発見ダッシュボード</title>
+    <script type="module" src="./src/main.ts"></script>
+</head>
+<body class="bg-dark-primary">
+    <div id="particles-js" class="fixed top-0 left-0 w-full h-full -z-10"></div>
+
+    <div class="flex h-screen">
+        <aside id="sidebar" class="w-64 flex-shrink-0 bg-dark-secondary/80 backdrop-blur-sm fixed inset-y-0 left-0 z-50 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out">
+            <div class="p-6 text-2xl font-bold text-white">Project<span class="text-brand-purple">Nebula</span></div>
+            <nav class="mt-8">
+                <a href="#" class="flex items-center px-6 py-3 text-white bg-dark-tertiary">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    <span class="ml-4">ダッシュボード</span>
+                </a>
+                <a href="https://www.ign.com/upcoming/games" target="_blank" class="flex items-center px-6 py-3 text-light-secondary hover:bg-dark-tertiary transition">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A8 8 0 0117.657 18.657z"/></svg>
+                    <span class="ml-4">人気のゲーム</span>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/List_of_video_game_developers_in_Japan" target="_blank" class="flex items-center px-6 py-3 text-light-secondary hover:bg-dark-tertiary transition">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
+                    <span class="ml-4">スタジオ</span>
+                </a>
+            </nav>
+        </aside>
+
+        <div class="flex-1 flex flex-col overflow-hidden md:ml-64">
+           <header class="flex justify-between items-center p-6 bg-dark-secondary/80 backdrop-blur-sm border-b border-dark-tertiary">
+    <div class="flex items-center">
+        <button id="menu-button" class="md:hidden mr-4 text-white">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="relative">
+            <input id="search-input" type="text" class="w-full pl-10 pr-4 py-2 rounded-lg bg-dark-tertiary text-light-primary focus:outline-none focus:ring-2 focus:ring-brand-purple border-transparent" placeholder="ゲームを検索...">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-light-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+    </div>
+    <div class="flex items-center">
+        <span class="text-white">Sadik</span>
+        <div id="profile-container" class="ml-4 cursor-pointer">
+            <img id="profile-pic" class="h-10 w-10 rounded-full object-cover" src="https://source.unsplash.com/100x100/?anime,profile" alt="profile">
+            <input type="file" id="file-upload" class="hidden" accept="image/png, image/jpeg">
+        </div>
+    </div>
+</header>
+
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-transparent p-6">
+                <h1 class="text-3xl font-semibold text-white animate-in">ダッシュボード</h1>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+                    <div class="p-6 bg-dark-secondary/80 backdrop-blur-sm rounded-lg animate-in" style="--delay: 100ms;"><h3 class="text-lg font-medium text-light-secondary">発見したゲーム</h3><p class="mt-2 text-3xl font-semibold text-white">1,428</p></div>
+                    <div class="p-6 bg-dark-secondary/80 backdrop-blur-sm rounded-lg animate-in" style="--delay: 200ms;"><h3 class="text-lg font-medium text-light-secondary">プレイ時間</h3><p class="mt-2 text-3xl font-semibold text-white">9,721</p></div>
+                    <div class="p-6 bg-dark-secondary/80 backdrop-blur-sm rounded-lg animate-in" style="--delay: 300ms;"><h3 class="text-lg font-medium text-light-secondary">欲しい物リスト</h3><p class="mt-2 text-3xl font-semibold text-white">215</p></div>
+                    <div class="p-6 bg-dark-secondary/80 backdrop-blur-sm rounded-lg animate-in" style="--delay: 400ms;"><h3 class="text-lg font-medium text-light-secondary">実績</h3><p class="mt-2 text-3xl font-semibold text-white">87%</p></div>
+                </div>
+
+                <div class="mt-8 bg-dark-secondary/80 backdrop-blur-sm rounded-lg overflow-hidden animate-in" style="--delay: 500ms;">
+                    <div class="p-6"><h2 class="text-xl font-semibold text-white">最近のアクティビティ</h2></div>
+                    <table class="w-full">
+                        <thead class="bg-dark-tertiary/80">
+                            <tr>
+                                <th class="p-4 text-left text-sm font-semibold text-light-secondary uppercase">ゲームタイトル</th>
+                                <th class="p-4 text-left text-sm font-semibold text-light-secondary uppercase hidden md:table-cell">スタジオ</th>
+                                <th class="p-4 text-left text-sm font-semibold text-light-secondary uppercase hidden lg:table-cell">ステータス</th>
+                                <th class="p-4 text-left text-sm font-semibold text-light-secondary uppercase">評価</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activity-table" class="divide-y divide-dark-tertiary">
+                            <tr data-game-title="Cyberpunk 2077">
+                                <td class="p-4 text-white"><a href="https://www.cyberpunk.net/" target="_blank" class="hover:text-brand-purple transition">Cyberpunk 2077</a></td>
+                                <td class="p-4 text-light-secondary hidden md:table-cell">CD Projekt Red</td>
+                                <td class="p-4 text-light-secondary hidden lg:table-cell"><span class="px-2 py-1 text-xs rounded-full bg-green-500/20 text-green-400">完了</span></td>
+                                <td class="p-4 text-yellow-400 font-semibold">9/10</td>
+                            </tr>
+                            <tr data-game-title="Elden Ring">
+                                <td class="p-4 text-white"><a href="https://en.bandainamcoent.eu/elden-ring" target="_blank" class="hover:text-brand-purple transition">Elden Ring</a></td>
+                                <td class="p-4 text-light-secondary hidden md:table-cell">FromSoftware</td>
+                                <td class="p-4 text-light-secondary hidden lg:table-cell"><span class="px-2 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400">進行中</span></td>
+                                <td class="p-4 text-yellow-400 font-semibold">10/10</td>
+                            </tr>
+                             <tr data-game-title="Stardew Valley">
+                                <td class="p-4 text-white"><a href="https://www.stardewvalley.net/" target="_blank" class="hover:text-brand-purple transition">Stardew Valley</a></td>
+                                <td class="p-4 text-light-secondary hidden md:table-cell">ConcernedApe</td>
+                                <td class="p-4 text-light-secondary hidden lg:table-cell"><span class="px-2 py-1 text-xs rounded-full bg-gray-500/20 text-gray-400">保留中</span></td>
+                                <td class="p-4 text-yellow-400 font-semibold">9/10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
